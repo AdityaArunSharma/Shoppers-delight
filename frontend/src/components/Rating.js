@@ -26,7 +26,7 @@ const Rating = ({value,text,color}) => {
   </div>;
 };
 
-Rating.PropTypes = {
+Rating.propTypes = {
     value: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
