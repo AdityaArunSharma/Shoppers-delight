@@ -3,24 +3,29 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import HomeScreen from './Screens/HomeScreen'
-import ProductScreen from './Screens/ProductScreen'
-import CartScreen from './Screens/CartScreen'
-import LoginScreen from './Screens/loginScreen'
-import RegisterScreen from './Screens/RegisterScreen'
-import ProfileScreen from './Screens/ProfileScreen'
-import ShippingScreen from './Screens/ShippingScreen'
-import PaymentScreen from './Screens/PaymentScreen'
-import PlaceOrderScreen from './Screens/PlaceOrderScreen'
-import OrderScreen from './Screens/OrderScreen'
+import HomeScreen from './screens/HomeScreen'
+import ProductScreen from './screens/ProductScreen'
+import CartScreen from './screens/CartScreen'
+import LoginScreen from './screens/loginScreen'
+import RegisterScreen from './screens/RegisterScreen'
+import ProfileScreen from './screens/ProfileScreen'
+import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
+import OrderScreen from './screens/OrderScreen'
+import UserListScreen from './screens/UserListScreen'
+import UserEditScreen from './screens/UserEditScreen'
+
 const App = () => {
   return (
     <Router>
       <Header />
       <main className='py-3'>
         <Container>
+        <Route path='/admin/user/:id/edit' component={UserEditScreen} />
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/shipping' component={ShippingScreen} />
+        <Route path='/admin/userlist' component={UserListScreen} />
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/profile' component={ProfileScreen}  />
