@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import Product from '../models/productModel.js';
 
 const getProducts = asyncHandler(async (req,res) => {
-  console.log("getProducts")
+  
   const keyword = req.query.keyword
   ? {
       name: {
@@ -133,9 +133,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
   
 
 const getTopProducts = asyncHandler(async (req, res) => {
-    console.log("getTopProducts")
+    
     const products = await Product.find({}).sort({ rating: -1 }).limit(3)
-    console.log(products)
+    
     res.json(products)
 
     // res.json({"message" : "getTopProducts"})

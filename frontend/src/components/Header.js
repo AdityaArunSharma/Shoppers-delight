@@ -12,7 +12,7 @@ const header = () => {
 
   const logoutHandler = () => {
     console.log('logout')
-    dispatch(logout())
+    dispatch(logout())    
   }
 
   return <header>
@@ -35,12 +35,19 @@ const header = () => {
               <LinkContainer to='/profile'>
                 <NavDropdown.Item>Profile</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+              <LinkContainer to='/'>
+                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+              </LinkContainer>
+              
+              <LinkContainer to='/wishlist'>
+                <NavDropdown.Item>Wishlist</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
           ) :  <LinkContainer to='/login'>
             <Nav.Link href="/login"><i className='fas fa-user'></i>Sign In</Nav.Link>
             </LinkContainer>
- }
+          }
+
           {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
@@ -53,11 +60,8 @@ const header = () => {
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
-              )}
-
-           
-        
-        
+          )}                     
+               
       </Nav>
     </Navbar.Collapse>
   </Container>

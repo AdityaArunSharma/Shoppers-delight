@@ -47,6 +47,11 @@ const ProductScreen = ({ history, match }) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
+  const addToWishListHandler = () => {
+    console.log("WishList Handler")
+    history.push(`/wishlist/${match.params.id}`)
+  }
+
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -144,6 +149,18 @@ const ProductScreen = ({ history, match }) => {
                       Add To Cart
                     </Button>
                   </ListGroup.Item>
+                  
+                  <ListGroup.Item>
+                    <Button
+                      onClick={addToWishListHandler}
+                      className='btn-block'
+                      type='button'
+                      disabled={product.countInStock === 0}
+                    >
+                      Add To WishList
+                    </Button>
+                  </ListGroup.Item>
+
                 </ListGroup>
               </Card>
             </Col>
