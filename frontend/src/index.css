@@ -63,3 +63,8 @@ h2{
 .homeScreenDiv{
   background-color: #FDF6EC
 }
+
+.productImage{
+  height: 30vh;
+  width: 30vh;
+}
