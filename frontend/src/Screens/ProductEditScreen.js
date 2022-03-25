@@ -16,6 +16,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState(' ')
   const [brand, setBrand] = useState(' ')
+  const [sellerEmail,setSellerEmail] = useState('aditya.sharma@iiitg.ac.in')
   const [category, setCategory] = useState(' ')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState(' ')
@@ -47,7 +48,7 @@ const ProductEditScreen = ({ match, history }) => {
         setBrand(product.brand)
         setCategory(product.category)
         setCountInStock(product.countInStock)
-        setDescription(product.description)
+        setDescription(product.description)        
       }
     }
   }, [dispatch, history, productId, product, successUpdate])
@@ -87,6 +88,7 @@ const ProductEditScreen = ({ match, history }) => {
         category,
         description,
         countInStock,
+        sellerEmail
       })
     )
   }
@@ -181,6 +183,16 @@ const ProductEditScreen = ({ match, history }) => {
                 placeholder='Enter description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='sellerEmail'>
+              <Form.Label>Seller Email</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter seller email'
+                value={sellerEmail}
+                onChange={(e) => setSellerEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

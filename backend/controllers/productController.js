@@ -72,6 +72,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
       brand,
       category,
       countInStock,
+      sellerEmail
     } = req.body
   
     const product = await Product.findById(req.params.id)
@@ -84,7 +85,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
       product.brand = brand
       product.category = category
       product.countInStock = countInStock
-  
+      product.sellerMail = sellerEmail
       const updatedProduct = await product.save()
       res.json(updatedProduct)
     } else {
