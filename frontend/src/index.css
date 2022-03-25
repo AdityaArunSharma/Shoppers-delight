@@ -44,3 +44,22 @@ h2{
 .carousel a {
   margin: 0 auto;
 }
+
+
+.header{
+  background-color: #663399
+}
+
+.carousel{
+
+  background-color: #46244C;
+
+}
+
+.searchBoxButton{
+  outline: 1px solid #3A3845
+}
+
+.homeScreenDiv{
+  background-color: #FDF6EC
+}

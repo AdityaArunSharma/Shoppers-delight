@@ -36,10 +36,10 @@ export const createOrder = (order) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    console.log(order)
+    // console.log(order)
     const { data } = await axios.post(`/api/orders`, order, config)
-    console.log("Returned")
-    console.log(data)
+    // console.log("Returned")
+    // console.log(data)
     dispatch({
       type: ORDER_CREATE_SUCCESS,
       payload: data,

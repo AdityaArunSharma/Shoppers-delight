@@ -5,11 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
-
+import {sendEmail} from '../actions/emailAction'
+import axios from "axios";
 
 const PlaceOrderScreen = ({history}) => {
     const dispatch = useDispatch()
-  const cart = useSelector((state) => state.cart)
+    const cart = useSelector((state) => state.cart)
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo} = userLogin
+
 
   //   Calculate prices
   const addDecimals = (num) => {
@@ -32,22 +36,27 @@ const PlaceOrderScreen = ({history}) => {
 
   useEffect(() => {
     if (success) {
+      // axios.post('/api/email',
+      // {userInfo,
+      // cart}
+      // ).then((response) => {console.log(response.data)})
       history.push(`/order/${order._id}`)
+
     }
     // eslint-disable-next-line
   }, [history, success])
 
   const placeOrderHandler = () => {
-    console.log('order')
-    console.log({
-      orderItems: cart.cartItems,
-      shippingAddress: cart.shippingAddress,
-      paymentMethod: cart.paymentMethod,
-      itemsPrice: cart.itemsPrice,
-      shippingPrice: cart.shippingPrice,
-      taxPrice: cart.taxPrice,
-      totalPrice: cart.totalPrice,
-    })
+    // console.log('order')
+    // console.log({
+    //   orderItems: cart.cartItems,
+    //   shippingAddress: cart.shippingAddress,
+    //   paymentMethod: cart.paymentMethod,
+    //   itemsPrice: cart.itemsPrice,
+    //   shippingPrice: cart.shippingPrice,
+    //   taxPrice: cart.taxPrice,
+    //   totalPrice: cart.totalPrice,
+    // })
     dispatch(
         createOrder({
           orderItems: cart.cartItems,

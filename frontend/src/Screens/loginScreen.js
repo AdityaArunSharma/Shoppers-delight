@@ -9,7 +9,7 @@ import FormContainer from '../components/FormContainer'
 import {useState,useEffect} from 'react'
 const loginScreen = ({location,history}) => {
 
-    console.log("Login Screen")
+    // console.log("Login Screen")
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
@@ -31,7 +31,7 @@ const loginScreen = ({location,history}) => {
         dispatch(login(email,password))
     }
 
-    console.log("login screen 34")
+    // console.log("login screen 34")
 
 //   return (
 

@@ -27,6 +27,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    sellerMail: {
+      type: String,
+      required: false,
+    },
     image: {
       type: String,
       required: true,

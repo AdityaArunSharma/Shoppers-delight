@@ -10,7 +10,6 @@ import { getOrderDetails,payOrder,deliverOrder, } from '../actions/orderActions'
 import { ORDER_PAY_RESET,ORDER_DELIVER_RESET, } from '../constants/orderConstants'
 
 
-
 const OrderScreen = ({ match }) => {
   const orderId = match.params.id
 
@@ -32,6 +31,9 @@ const OrderScreen = ({ match }) => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const cart = useSelector((state) => state.cart)
+    
 
   if (!loading) {
     //   Calculate prices
@@ -58,10 +60,21 @@ const OrderScreen = ({ match }) => {
       document.body.appendChild(script)
     }
 
+    if(successPay){
+        const sendEmailFunction = async () =>{
+        const {data} = await axios.post('/api/email',{userInfo,cart})
+        console.log(data)
+      }
+      sendEmailFunction()
+      // console.log(userInfo)
+      // console.log(cart)
+    }
+
     if (!order || successPay || successDeliver) {
       dispatch({ type: ORDER_PAY_RESET })
       dispatch({ type: ORDER_DELIVER_RESET })
       dispatch(getOrderDetails(orderId))
+      
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript()
@@ -73,7 +86,7 @@ const OrderScreen = ({ match }) => {
   }, [dispatch, orderId, successPay, order,successDeliver])
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult)
+    // console.log(paymentResult)
     dispatch(payOrder(orderId, paymentResult))
   }
 

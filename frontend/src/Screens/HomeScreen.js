@@ -27,6 +27,7 @@ const HomeScreen = ({ match }) => {
   return (
     <>
       <Meta />
+      <h1>Popular Products</h1>
       {!keyword ? (
         <ProductCarousel />
       ) : (
@@ -34,7 +35,7 @@ const HomeScreen = ({ match }) => {
           Go Back
         </Link>
       )}
-      <h1>Latest Products</h1>
+      
       {loading ? (
         <Loader />
       ) : error ? (
