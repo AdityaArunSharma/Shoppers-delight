@@ -38,7 +38,10 @@ const RegisterScreen = ({location,history}) => {
         e.preventDefault()
         if(password!==confirmPassword){
             setMessage('Passwords do not match')
-        } else{
+        } else if(!email.endsWith("@iiitg.ac.in")){
+          alert("Only IIIT-Guwahati registered email ids are allowed")
+        }
+         else{
             dispatch(register(name,email,password))
         }
         
