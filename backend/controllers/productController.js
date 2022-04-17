@@ -17,7 +17,7 @@ const getProducts = asyncHandler(async (req,res) => {
   const count = await Product.countDocuments({ ...keyword })
   const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
   
-  res.json({ products, page, pages: Math.ceil(count / pageSize) })
+  res.status(200).json({ products, page, pages: Math.ceil(count / pageSize) })
 
 })
 
@@ -36,7 +36,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   
     if (product) {
       await product.remove()
-      res.json({ message: 'Product removed' })
+      res.status(200).json({ message: 'Product removed' })
     } else {
       res.status(404)
       throw new Error('Product not found')
@@ -87,7 +87,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
       product.countInStock = countInStock
       product.sellerMail = sellerEmail
       const updatedProduct = await product.save()
-      res.json(updatedProduct)
+      res.status(200).json(updatedProduct)
     } else {
       res.status(404)
       throw new Error('Product not found')
@@ -137,7 +137,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
     
     const products = await Product.find({}).sort({ rating: -1 }).limit(3)
     
-    res.json(products)
+    res.status(200).json(products)
 
     // res.json({"message" : "getTopProducts"})
 

@@ -61,22 +61,17 @@ export const sendEmail = (req,res)=>{
     const { userInfo,
             cart
     } 
-        = req.body;                     
+        = req.body; 
+        
     const {name,email} = userInfo
-    const {cartItems,shippingAddress} = cart  
-    console.log(name)
-    console.log(email)
-    console.log(cartItems)
-    console.log(shippingAddress)  
+    const {cartItems,shippingAddress} = cart       
     const address = shippingAddress.address + " " + shippingAddress.city + " " + shippingAddress.postalCode + " " + shippingAddress.country + " "
     const receipt = getOrderMessage(cartItems,name,email,address)
-    const mailIds = getMailIds(cartItems)  
-    console.log(mailIds)
+    const mailIds = getMailIds(cartItems)      
     for(var x=0;x<mailIds.length;x++) {
         sendEmailHelper(mailIds[x],receipt[x],"New Order!")
     }
-    const customerEmailBody = getFullReceipt(cartItems)
-    console.log(customerEmailBody)
+    const customerEmailBody = getFullReceipt(cartItems)    
     sendEmailHelper(email,customerEmailBody,"Your Order Summary.")
     res.status(201).json({'status' : 'sent'})    
 }
